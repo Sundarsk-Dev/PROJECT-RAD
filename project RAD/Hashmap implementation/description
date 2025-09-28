@@ -1,0 +1,36 @@
+# RAD Project: Dual Hash Map Solutions (Efficiency Showcase)
+
+## 🎯 The Core Pitch: Why Hash Maps Dominate
+
+This project showcases two distinct, critical applications of the Hash Map data structure (Python `dict`). In both system design (Rate Limiter) and data analysis (Frequency Counter), the Hash Map transforms naive **O(N) searching** into instant **O(1) lookups**, making the solutions aggressively efficient.
+
+| Project                     | Hash Map Stores                 | Time Complexity       | Core Benefit                                               |
+| :-------------------------- | :------------------------------ | :-------------------- | :--------------------------------------------------------- |
+| **1. Word Cloud Generator** | `{word: count}`                 | **O(N)** for counting | Rapidly aggregates frequencies in a single pass.           |
+| **2. API Rate Limiter**     | `{user_ID: [count, timestamp]}` | **O(1)** per request  | Instantly manages user state for high-throughput security. |
+
+---
+
+## 💻 Implementation 1: Word Cloud Generator (Frequency Counting)
+
+**Goal:** Calculate the frequency of every word in a large text body.
+
+**DSA Insight:** As we iterate through the words (O(N)), we use the word as the **key** to query the Hash Map.
+
+- If the key exists, we perform an O(1) increment.
+- If the key doesn't exist, we perform an O(1) insertion.
+
+The total time complexity is dominated by the single pass over the input list of words, resulting in an optimal **O(N)** solution.
+
+---
+
+## 🛑 Implementation 2: API Rate Limiter (State Management)
+
+**Goal:** Prevent abuse by limiting the number of requests per user within a time window.
+
+**DSA Insight:** This is a system design problem where time is critical.
+
+- **Key:** The unique `user_ID` (string).
+- **Value:** A list containing the `[request_count, first_request_timestamp]`.
+
+When a request arrives, we use the `user_ID` to achieve **O(1) lookup** of their state. We instantly check their current count and the time elapsed since their first request. This constant-time access ensures the server doesn't slow down under load, even with millions of active users.

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RAD Project: Rate Limiter</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>RAD HashMap Solutions</h1>
+      <nav>
+        <a href="/">Word Analyzer</a>
+        <a href="/rate-limiter" class="active">Rate Limiter</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="pitch-box">
+        <span class="dsa-label">DSA: Hash Map (O(1) State Management)</span>
+        <h2>API Rate Limiter Simulator</h2>
+        <p>{{ pitch }}</p>
+      </div>
+
+      <section class="simulator-section">
+        <h3>Simulate Request</h3>
+        <form method="POST" action="/rate-limiter">
+          <input
+            type="text"
+            name="user_id"
+            placeholder="Enter User ID (e.g., UserA, UserB)"
+            value="{{ user_id or 'UserA' }}"
+            required
+          />
+          <button type="submit">Send API Request (O(1) Check)</button>
+          <button type="submit" name="reset" value="true" class="reset-button">
+            System Reset
+          </button>
+        </form>
+
+        {% if result %}
+        <p class="result-message">{{ result }}</p>
+        {% endif %}
+      </section>
+
+      <section class="tracking-section">
+        <h3>Live User Tracking (Hash Map State)</h3>
+        <div class="tracking-grid-header">
+          <span>User ID (Key)</span>
+          <span>Requests Used (Value)</span>
+          <span>Time Left in Window</span>
+        </div>
+        {% for user in user_data %}
+        <div class="tracking-grid-item">
+          <span class="user-id">{{ user.id }}</span>
+          <span class="user-count">{{ user.count }}</span>
+          <span class="user-time">{{ user.time_left }}</span>
+        </div>
+        {% endfor %} {% if not user_data %}
+        <p style="text-align: center; margin-top: 15px">
+          No active users being tracked yet.
+        </p>
+        {% endif %}
+      </section>
+    </main>
+  </body>
+</html>

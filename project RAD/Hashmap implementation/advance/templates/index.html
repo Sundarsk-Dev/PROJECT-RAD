@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RAD Project: Word Analyzer</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>RAD HashMap Solutions</h1>
+      <nav>
+        <a href="/">Word Analyzer</a>
+        <a href="/rate-limiter" class="active">Rate Limiter</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="pitch-box">
+        <span class="dsa-label">DSA: Hash Map (O(N) Counting)</span>
+        <h2>Word Frequency Analyzer</h2>
+        <p>{{ pitch }}</p>
+      </div>
+
+      <section class="input-section">
+        <h3>Input Text</h3>
+        <form method="POST" action="/">
+          <textarea
+            name="text_input"
+            rows="8"
+            placeholder="Paste your text here (e.g., 'The quick brown fox jumps over the lazy dog. The dog is lazy.')"
+          >
+{{ input_text }}</textarea
+          >
+          <button type="submit">Analyze Text (O(N) Run)</button>
+        </form>
+      </section>
+
+      {% if frequencies %}
+      <section class="results-section">
+        <h3>Analysis Results (Top 10 Words)</h3>
+        <div class="result-grid">
+          {% for item in frequencies %}
+          <div class="result-item">
+            <span class="word-label">{{ item.word }}</span>
+            <span class="count-value">{{ item.count }}</span>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+    </main>
+  </body>
+</html>
