@@ -1,0 +1,17 @@
+# RAD Project: The File De-duplicator Utility
+
+## 💡 Project Pitch (The Dominant Advantage)
+
+This utility is a direct implementation of the **Two Pointers** array technique, optimized for production-level efficiency. It solves the critical task of data isolation by moving "corrupt" data (size 0) to the end of a list for bulk deletion.
+
+* **Aggressive Efficiency:** Achieves **O(N) Time Complexity** (single pass) for instant processing, regardless of array size.
+* **Minimal Footprint:** Achieves **O(1) Space Complexity** by performing all operations **in-place**, avoiding costly memory allocation for new arrays. This is non-negotiable for large-scale data manipulation.
+
+## 🛠️ The Core DSA Problem: Two Pointers (Move Zeroes variant)
+
+| Pointer Name | Role in the Algorithm | Explanation |
+| :--- | :--- | :--- |
+| `write_ptr` (Slow) | **Next Non-Zero Slot** | Marks the boundary of the cleaned array section. It waits at the next position that a good file *should* occupy. |
+| `read_ptr` (Fast) | **Scanner** | Iterates through every element. When it finds a good file (non-zero), it swaps it into the slot held by the `write_ptr`. |
+
+**How it Works:** The `write_ptr` ensures that every element it passes is a correctly positioned non-zero number. When the `read_ptr` finishes, all elements from `write_ptr` to the end are the zeroes that were pushed back. The relative order of the non-zero files is perfectly preserved.
