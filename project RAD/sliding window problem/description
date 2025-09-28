@@ -1,0 +1,24 @@
+# RAD Project: Movie Recommender Engine (Sliding Window)
+
+## 🎯 The Core Pitch: Optimal Sequence Discovery
+
+This project demonstrates the **Sliding Window Pattern**—a critical technique for solving sequence and subarray problems in optimal **O(N) time**. By dynamically adjusting the window boundaries ($\text{left}$ and $\text{right}$), we avoid the need for brute-force $O(N^2)$ checks on every possible sub-sequence.
+
+## ⚙️ DSA Components
+
+### 1. The Sliding Window (The Pointers)
+* **Expansion ($\text{right}$):** The right pointer always moves forward, extending the sequence and incorporating a new element. This is the **O(N) single pass**.
+* **Contraction ($\text{left}$):** The left pointer only moves when the **constraint** (Max M repeats) is violated. It shrinks the window just enough to restore validity.
+
+### 2. The Hash Map (The Constraint Tracker)
+* The Hash Map stores **`{Genre: Count}`** for elements *currently inside the window*.
+* It provides **O(1) time complexity** for:
+    * Checking a genre's current count.
+    * Incrementing or decrementing a count during window adjustments.
+
+## 🌐 Real-World Tie: Content Fatigue Management
+
+This engine is analogous to recommendation systems that aim to prevent user fatigue or promote diversity.
+
+* **Problem:** If a user watches too much "Action," the system needs to find the longest *valid* sequence that excludes further "Action" movies until the user has moved past the fatigued point.
+* **Solution:** The engine instantly finds the best sequence ($\text{longest sequence where count} \le M$), ensuring the user's current stream is optimized for engagement and diversity, without scanning the entire history repeatedly.
