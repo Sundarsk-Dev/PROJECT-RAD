@@ -1,4 +1,3 @@
-# File: MapUtilities.py
 
 from collections import Counter
 import time
@@ -161,4 +160,5 @@ if __name__ == "__main__":
         "UserA"   # UserA's 5th request (DENY)
     ]
     
+
     limiter.display_ui(simulated_requests) 
