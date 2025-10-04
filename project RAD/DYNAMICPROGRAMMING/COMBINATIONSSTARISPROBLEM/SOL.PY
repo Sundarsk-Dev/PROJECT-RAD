@@ -28,7 +28,7 @@ def climbStairs_optimal(n: int) -> int:
         # F(n) = F(n-1) + F(n-2)
         current_ways = ways_i_minus_1 + ways_i_minus_2
         
-        # Shift the pointers for the next iteration (i+1):
+        
         # The current F(n-1) becomes the new F(n-2)
         ways_i_minus_2 = ways_i_minus_1
         
@@ -67,4 +67,5 @@ if __name__ == "__main__":
     if all_passed:
         print("\n✅ All test cases passed successfully!")
     else:
+
         print("\n❌ Some test cases failed.")
