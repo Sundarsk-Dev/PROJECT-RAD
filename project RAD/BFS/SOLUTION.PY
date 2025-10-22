@@ -1,6 +1,4 @@
 import collections
-
-# Definition for a graph node (required for the problem)
 class Node:
     def __init__(self, val = 0, neighbors = None):
         self.val = val
@@ -123,4 +121,5 @@ if __name__ == '__main__':
     orig_neighbors = [n.val for n in original_graph.neighbors]
     clone_neighbors = [n.val for n in cloned_graph.neighbors]
     print(f"Original Node 1 Neighbors: {orig_neighbors}")
+
     print(f"Cloned Node 1 Neighbors: {clone_neighbors}")
